@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iceihehe.cm.dao.mapper.SysUserMapper">
+    <resultMap id="sysUser" type="com.iceihehe.cm.dao.entity.SysUser">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+    </resultMap>
+    <select id="getSysUsers" resultMap="sysUser">
+        select * from sys_user
+    </select>
+    <select id="getSysUserById" resultMap="sysUser">
+        select * from sys_user where id = #{id}
+    </select>
+</mapper>

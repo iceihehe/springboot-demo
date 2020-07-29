@@ -1,5 +1,6 @@
 package com.iceihehe.cm.dao.entity;
 
+
 public class SysUser {
 
     private Integer id;

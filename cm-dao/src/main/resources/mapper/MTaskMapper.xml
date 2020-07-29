@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iceihehe.cm.dao.mapper.MTaskMapper">
+    <resultMap id="mTask" type="com.iceihehe.cm.dao.entity.MTask">
+        <result column="id" property="id" />
+        <result column="app_type" property="appType" />
+    </resultMap>
+    <sql id="filterMobileAccountId">
+        where monitored_account_id = #{mobileAccountId}
+    </sql>
+    <select id="getMTasks" resultMap="mTask">
+        select * from monitoring_task <include refid="filterMobileAccountId"></include>
+    </select>
+    <select id="getTotal" resultType="Integer">
+        select count(1) from monitoring_task <include refid="filterMobileAccountId"></include>;
+    </select>
+
+</mapper>

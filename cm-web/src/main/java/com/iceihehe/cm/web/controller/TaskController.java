@@ -22,11 +22,13 @@ public class TaskController {
     public GwResp<TaskListRespData> getTaskList(TaskListReqData taskListReqData) {
         List<TaskListRespData> taskListRespDataList = new ArrayList<>();
         List<MTask> mTasks = taskService.getMTasks(taskListReqData.getMobileAccountId());
+        System.out.println(mTasks);
         for (MTask mTask : mTasks) {
             TaskListRespData taskListRespData = new TaskListRespData();
             taskListRespData.setAppType(mTask.getAppType());
             taskListRespData.setStatus(mTask.getStatus());
 //            taskListRespData.setStartTime(mTask.getStartTime().getTime());
+            taskListRespData.setAppName(mTask.getSupportedApp().getName());
             taskListRespDataList.add(taskListRespData);
         }
         GwResp<TaskListRespData> resp = new GwResp<>();

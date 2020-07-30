@@ -8,6 +8,16 @@ public class MTask {
     private int status;
     private Date startTime;
 
+    private SupportedApp supportedApp;
+
+    public SupportedApp getSupportedApp() {
+        return supportedApp;
+    }
+
+    public void setSupportedApp(SupportedApp supportedApp) {
+        this.supportedApp = supportedApp;
+    }
+
     public int getId() {
         return id;
     }

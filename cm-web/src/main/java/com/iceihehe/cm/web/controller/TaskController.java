@@ -21,8 +21,7 @@ public class TaskController {
     @RequestMapping(path = "/api/monitor-task")
     public GwResp<TaskListRespData> getTaskList(TaskListReqData taskListReqData) {
         List<TaskListRespData> taskListRespDataList = new ArrayList<>();
-        List<MTask> mTasks = taskService.getMTasks(taskListReqData.getMobileAccountId());
-        System.out.println(mTasks);
+        List<MTask> mTasks = taskService.getMTasks(taskListReqData.getMobileAccountId(), taskListReqData.getPageNum(), taskListReqData.getPageSize());
         for (MTask mTask : mTasks) {
             TaskListRespData taskListRespData = new TaskListRespData();
             taskListRespData.setAppType(mTask.getAppType());

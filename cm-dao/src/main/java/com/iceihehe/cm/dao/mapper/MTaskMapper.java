@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface MTaskMapper {
-    List<MTask> getMTasks(@Param("mobileAccountId") int mobileAccountId);
+    List<MTask> getMTasks(@Param("mobileAccountId") int mobileAccountId, @Param("offsetNum") int offsetNum, @Param("limitNum") int limitNum);
 
     int getTotal(@Param("mobileAccountId") int mobileAccountId);
 }

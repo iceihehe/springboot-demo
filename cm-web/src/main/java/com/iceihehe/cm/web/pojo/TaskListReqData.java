@@ -1,8 +1,8 @@
 package com.iceihehe.cm.web.pojo;
 
-import com.iceihehe.cm.web.dto.ReqData;
+import com.iceihehe.cm.web.dto.PageReqData;
 
-public class TaskListReqData extends ReqData {
+public class TaskListReqData extends PageReqData {
 
     private int mobileAccountId;
 

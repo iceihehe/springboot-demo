@@ -18,12 +18,8 @@
             monitoring_task.monitored_account_id = #{mobileAccountId} and supported_app.enabled = 1
         </where>
     </sql>
-    <sql id="pagination">
-        limit #{offsetNum}, #{limitNum}
-    </sql>
-    <select id="getMTasks" resultMap="mTask">
-        select monitoring_task.*, supported_app.name as app_name from monitoring_task  join supported_app  on supported_app.id = monitoring_task.app_type <include refid="filterMobileAccountId"></include><include
-            refid="pagination"></include>
+    <select id="getMTaskList" resultMap="mTask">
+        select monitoring_task.*, supported_app.name as app_name from monitoring_task  join supported_app  on supported_app.id = monitoring_task.app_type <include refid="filterMobileAccountId"></include>
     </select>
     <select id="getTotal" resultType="Integer">
         select count(1) from monitoring_task join supported_app on supported_app.id = monitoring_task.app_type <include refid="filterMobileAccountId"></include>

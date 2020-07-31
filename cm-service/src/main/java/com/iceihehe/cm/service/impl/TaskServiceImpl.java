@@ -15,8 +15,9 @@ public class TaskServiceImpl implements TaskService {
     private MTaskMapper mTaskMapper;
 
 
-    public List<MTask> getMTasks(int mobileAccountId, int pageNum, int pageSize) {
-        return mTaskMapper.getMTasks(mobileAccountId, (pageNum - 1) * pageSize, pageSize);
+    public List<MTask> getMTaskList(int mobileAccountId, int pageNum, int pageSize) {
+        return mTaskMapper.getMTaskList(mobileAccountId, (pageNum - 1) * pageSize, pageSize);
+
     }
     public int getTotal(int mobileAccountId) {
         return mTaskMapper.getTotal(mobileAccountId);

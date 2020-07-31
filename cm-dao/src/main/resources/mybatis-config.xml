@@ -5,5 +5,8 @@
         <setting name="cacheEnabled" value="true"/>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
+    <plugins>
+        <plugin interceptor="com.iceihehe.cm.dao.interceptor.PaginationInterceptor"/>
+    </plugins>
 
 </configuration>

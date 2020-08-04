@@ -1,9 +1,7 @@
 package com.iceihehe.cm.web;
 
-import com.iceihehe.cm.service.rabbitmq.Receiver;
 import com.iceihehe.cm.web.interceptor.LoginInterceptor;
 import org.springframework.amqp.core.*;
-import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +14,6 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Value("${spring.rabbitmq.template.exchange}")
     private String topicExchangeName;
-    public static final String defaultListenerMethod = "receiveMessage";
 
     @Bean
     public LoginInterceptor loginInterceptor() {
@@ -52,11 +49,5 @@ public class WebConfig implements WebMvcConfigurer {
     Binding receiveFeedbackBinding(TopicExchange exchange) {
         return BindingBuilder.bind(receiveFeedbackQueue()).to(exchange).with(receiveFeedbackQueue().getName());
     }
-
-//    @Bean
-//    MessageListenerAdapter listenerAdapter(Receiver receiver) {
-//        return new MessageListenerAdapter(receiver, defaultListenerMethod);
-//    }
-
 
 }

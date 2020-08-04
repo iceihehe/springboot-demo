@@ -15,7 +15,7 @@ public class WelcomeController {
     @RequestMapping(path = "/welcome")
     public String welcome() {
 
-        producer.sendSms("Welcome ya!");
+        producer.sendSmsProducer("Welcome ya!");
         return "Welcome!";
     }
 }

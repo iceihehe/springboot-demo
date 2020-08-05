@@ -14,12 +14,15 @@ import org.springframework.messaging.handler.annotation.support.DefaultMessageHa
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Value("${spring.rabbitmq.template.exchange}")
-    private String topicExchangeName;
+    public static final String topicExchangeName = "cm-exchange";
+    public static final String delayExchange = "delay-exchange";
 
     @Bean
     public LoginInterceptor loginInterceptor() {
@@ -34,6 +37,13 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     TopicExchange exchange() {
         return new TopicExchange(topicExchangeName);
+    }
+
+    @Bean
+    CustomExchange delayExchange() {
+        Map<String, Object> args = new HashMap<>();
+        args.put("x-delayed-type", "direct");
+        return new CustomExchange(delayExchange, "x-delayed-message", true, false, args);
     }
 
     @Bean
@@ -73,6 +83,25 @@ public class WebConfig implements WebMvcConfigurer {
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
         template.setMessageConverter(jsonMessageConverter());
         return template;
+    }
+
+    @Bean
+    Queue pingQueue() {
+        return new Queue("queue_ping", false);
+    }
+
+    @Bean
+    Binding pingBinding(TopicExchange exchange) {
+        return BindingBuilder.bind(pingQueue()).to(exchange).with(pingQueue().getName());
+    }
+    @Bean
+    Queue taskTimeoutQueue() {
+        return new Queue("queue_task_timeout", false);
+    }
+
+    @Bean
+    Binding taskTimeoutBinding(CustomExchange customExchange) {
+        return BindingBuilder.bind(taskTimeoutQueue()).to(customExchange).with(taskTimeoutQueue().getName()).noargs();
     }
 
 }

@@ -1,6 +1,5 @@
 package com.iceihehe.cm.service.rabbitmq.pojo;
 
-import java.io.Serializable;
 
 public class SendSmsPojo {
 

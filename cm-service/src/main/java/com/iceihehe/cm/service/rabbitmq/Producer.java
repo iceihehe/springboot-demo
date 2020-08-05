@@ -29,6 +29,11 @@ public class Producer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    @Value("#{delayExchange.name}")
+    private String delayExchangeName;
+
+
+
     public void sendSmsProducer(SendSmsPojo sendSmsPojo) {
         logger.info("----------sendSmsProducer: " + sendSmsPojo.getTargetPhone() + " - " + sendSmsPojo.getContent() + "----------");
         String messageId = UUID.randomUUID().toString();
@@ -47,7 +52,7 @@ public class Producer {
 
     public void taskTimeoutProducer(TaskTimeoutPojo taskTimeoutPojo) {
         logger.info("----------taskTimeoutProducer: " + taskTimeoutPojo.getId() + "----------");
-        rabbitTemplate.convertAndSend("delay-exchange", taskTimeoutRoutingKey, taskTimeoutPojo, message -> {
+        rabbitTemplate.convertAndSend(delayExchangeName, taskTimeoutRoutingKey, taskTimeoutPojo, message -> {
             MessageProperties messageProperties = message.getMessageProperties();
             messageProperties.setDelay(10000);
             return message;

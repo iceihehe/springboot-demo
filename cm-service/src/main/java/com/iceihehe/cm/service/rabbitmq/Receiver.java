@@ -1,6 +1,7 @@
 package com.iceihehe.cm.service.rabbitmq;
 
 import com.iceihehe.cm.service.rabbitmq.pojo.SendSmsPojo;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +14,9 @@ public class Receiver {
 
 
     @RabbitListener(queues = "#{sendSmsQueue.name}")
-    public void sendSmsReceiver(SendSmsPojo sendSmsPojo) {
+    public void sendSmsReceiver(SendSmsPojo sendSmsPojo, Message message) {
         logger.info("----------sendSmsReceiver: " + sendSmsPojo.getTargetPhone() + " - " + sendSmsPojo.getContent() + "----------");
+        logger.info((String) message.getMessageProperties().getHeaders().get("id"));
     }
 
 

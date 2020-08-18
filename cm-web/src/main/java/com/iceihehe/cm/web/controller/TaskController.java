@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class TaskController {
     private TaskService taskService;
 
     @RequestMapping(path = "/api/monitor-task")
-    public GwResp<TaskListRespData> getTaskList(TaskListReqData taskListReqData) {
+    public GwResp<TaskListRespData> getTaskList(@Valid TaskListReqData taskListReqData) {
         List<TaskListRespData> taskListRespDataList = new ArrayList<>();
         List<MTask> mTasks = taskService.getMTaskList(taskListReqData.getMobileAccountId(), taskListReqData.getPageNum(), taskListReqData.getPageSize());
         for (MTask mTask : mTasks) {

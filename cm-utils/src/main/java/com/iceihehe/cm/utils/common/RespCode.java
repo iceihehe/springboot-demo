@@ -1,7 +1,9 @@
 package com.iceihehe.cm.utils.common;
 
 public enum  RespCode {
-    SUCCESS(10000, "成功");
+    SUCCESS(10000, "成功"),
+    PARAMETER_ERROR(20001, "参数错误"),
+    SYSTEM_ERROR(50000, "系统错误");
 
     private int code;
     private String msg;

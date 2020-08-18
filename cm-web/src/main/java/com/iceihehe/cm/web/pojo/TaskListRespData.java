@@ -1,16 +1,16 @@
 package com.iceihehe.cm.web.pojo;
 
-import com.iceihehe.cm.web.dto.GwResp;
 import com.iceihehe.cm.web.dto.RespData;
 
 public class TaskListRespData extends RespData {
 
     private String appName;
-    private int appType;
+    private Integer appType;
     private String content;
-    private int status;
-    private long startTime;
-    private long updateTime;
+    private Integer status;
+    private Long startTime;
+    private Long updateTime;
+    private Long createTime;
 
     public String getAppName() {
         return appName;
@@ -20,11 +20,11 @@ public class TaskListRespData extends RespData {
         this.appName = appName;
     }
 
-    public int getAppType() {
+    public Integer getAppType() {
         return appType;
     }
 
-    public void setAppType(int appType) {
+    public void setAppType(Integer appType) {
         this.appType = appType;
     }
 
@@ -36,27 +36,35 @@ public class TaskListRespData extends RespData {
         this.content = content;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public long getStartTime() {
+    public Long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(long startTime) {
+    public void setStartTime(Long startTime) {
         this.startTime = startTime;
     }
 
-    public long getUpdateTime() {
+    public Long getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(long updateTime) {
+    public void setUpdateTime(Long updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
     }
 }

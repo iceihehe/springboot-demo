@@ -2,6 +2,7 @@ package com.iceihehe.cm.web.controller;
 
 import com.iceihehe.cm.dao.entity.MTask;
 import com.iceihehe.cm.service.TaskService;
+import com.iceihehe.cm.utils.processor.TimeProcessor;
 import com.iceihehe.cm.web.dto.GwResp;
 import com.iceihehe.cm.web.pojo.TaskListReqData;
 import com.iceihehe.cm.web.pojo.TaskListRespData;
@@ -26,10 +27,13 @@ public class TaskController {
             TaskListRespData taskListRespData = new TaskListRespData();
             taskListRespData.setAppType(mTask.getAppType());
             taskListRespData.setStatus(mTask.getStatus());
-//            taskListRespData.setStartTime(mTask.getStartTime().getTime());
+            taskListRespData.setCreateTime(TimeProcessor.process(mTask.getCreateTime()));
+            taskListRespData.setStartTime(TimeProcessor.process(mTask.getStartTime()));
+            taskListRespData.setUpdateTime(TimeProcessor.process(mTask.getUpdateTime()));
             taskListRespData.setAppName(mTask.getSupportedApp().getName());
             taskListRespDataList.add(taskListRespData);
         }
+        System.out.println(taskListRespDataList);
         GwResp<TaskListRespData> resp = new GwResp<>();
         resp.setData(taskListRespDataList);
         resp.setTotal(taskService.getTotal(taskListReqData.getMobileAccountId()));

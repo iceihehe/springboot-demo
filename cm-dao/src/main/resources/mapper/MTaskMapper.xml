@@ -9,6 +9,9 @@
     <resultMap id="mTask" type="com.iceihehe.cm.dao.entity.MTask">
         <id column="id" property="id" />
         <result column="app_type" property="appType" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="start_time" property="startTime" />
         <association property="supportedApp" javaType="com.iceihehe.cm.dao.entity.SupportedApp">
             <result property="name" column="app_name"/>
         </association>

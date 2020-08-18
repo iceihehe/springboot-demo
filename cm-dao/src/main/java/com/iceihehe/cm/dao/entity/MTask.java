@@ -3,10 +3,12 @@ package com.iceihehe.cm.dao.entity;
 import java.sql.Date;
 
 public class MTask {
-    private int id;
-    private int appType;
-    private int status;
+    private Integer id;
+    private Integer appType;
+    private Integer status;
+    private Date createTime;
     private Date startTime;
+    private Date updateTime;
 
     private SupportedApp supportedApp;
 
@@ -18,28 +20,36 @@ public class MTask {
         this.supportedApp = supportedApp;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getAppType() {
+    public Integer getAppType() {
         return appType;
     }
 
-    public void setAppType(int appType) {
+    public void setAppType(Integer appType) {
         this.appType = appType;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Date getStartTime() {
@@ -48,5 +58,13 @@ public class MTask {
 
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

@@ -34,7 +34,6 @@ public class TaskController {
             taskListRespData.setAppName(mTask.getSupportedApp().getName());
             taskListRespDataList.add(taskListRespData);
         }
-        System.out.println(taskListRespDataList);
         GwResp<TaskListRespData> resp = new GwResp<>();
         resp.setData(taskListRespDataList);
         resp.setTotal(taskService.getTotal(taskListReqData.getMobileAccountId()));

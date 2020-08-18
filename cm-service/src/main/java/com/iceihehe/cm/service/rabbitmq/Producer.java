@@ -2,6 +2,8 @@ package com.iceihehe.cm.service.rabbitmq;
 
 import com.iceihehe.cm.service.rabbitmq.pojo.SendSmsPojo;
 import com.iceihehe.cm.service.rabbitmq.pojo.TaskTimeoutPojo;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +12,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
-import java.util.logging.Logger;
 
 @Component
 public class Producer {
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this.getClass().getName());
 
 
     @Value("#{sendSmsQueue.name}")

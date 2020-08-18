@@ -2,16 +2,17 @@ package com.iceihehe.cm.service.rabbitmq;
 
 import com.iceihehe.cm.service.rabbitmq.pojo.SendSmsPojo;
 import com.iceihehe.cm.service.rabbitmq.pojo.TaskTimeoutPojo;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-import java.util.logging.Logger;
 
 @Component
 public class Receiver {
 
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this.getClass().getName());
 
 
     @RabbitListener(queues = "#{sendSmsQueue.name}")

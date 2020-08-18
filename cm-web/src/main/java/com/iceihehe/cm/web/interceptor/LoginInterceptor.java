@@ -1,15 +1,16 @@
 package com.iceihehe.cm.web.interceptor;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
-import java.util.logging.Logger;
 
 public class LoginInterceptor implements HandlerInterceptor {
-    private Logger logger = Logger.getLogger(this.getClass().getName());
+    private Logger logger = LogManager.getLogger(this.getClass().getName());
     private HashMap<String, String> cookieHashMap = new HashMap<>();
 
     @Override

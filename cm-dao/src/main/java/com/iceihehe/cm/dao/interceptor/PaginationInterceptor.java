@@ -10,15 +10,16 @@ import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.util.HashMap;
-import java.util.logging.Logger;
 
 @Intercepts(@Signature(type= StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class}))
 public class PaginationInterceptor implements Interceptor {
 
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this.getClass().getName());
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {

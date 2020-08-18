@@ -13,9 +13,4 @@
     <name>cm-utils</name>
     <description>cm utils</description>
 
-    <properties>
-        <java.version>11</java.version>
-    </properties>
-
-
 </project>

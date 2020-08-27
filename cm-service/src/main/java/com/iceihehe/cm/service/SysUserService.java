@@ -8,4 +8,5 @@ import java.util.List;
 public interface SysUserService {
     List<SysUser> getSysUsers();
     SysUser getSysUserById(int id);
+    SysUser getSysUserByUsername(String username);
 }

@@ -11,4 +11,7 @@
     <select id="getSysUserById" resultMap="sysUser">
         select * from sys_user where id = #{id}
     </select>
+    <select id="getSysUserByUsername" resultMap="sysUser">
+        select * from sys_user where username = #{username}
+    </select>
 </mapper>
